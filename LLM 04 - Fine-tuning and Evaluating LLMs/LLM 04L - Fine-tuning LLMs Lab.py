@@ -91,7 +91,7 @@ from nltk.tokenize import sent_tokenize
 # COMMAND ----------
 
 # TODO
-ds = <FILL_IN>
+ds = load_dataset("databricks/databricks-dolly-15k")  #<FILL_IN>
 
 # COMMAND ----------
 
@@ -111,7 +111,7 @@ dbTestQuestion4_1(ds)
 # COMMAND ----------
 
 # TODO
-model_checkpoint = <FILL_IN>
+model_checkpoint = "pythia-70m-deduped" #<FILL_IN>
 
 # COMMAND ----------
 
@@ -132,7 +132,7 @@ dbTestQuestion4_2(model_checkpoint)
 
 # TODO
 # load the tokenizer that was used for the model
-tokenizer = <FILL_IN>
+tokenizer = AutoTokenizer.from_pretrained(model_checkpoint, model_max_length=1024, cache_dir=DA.paths.datasets) #<FILL_IN>
 tokenizer.pad_token = tokenizer.eos_token
 tokenizer.add_special_tokens(
     {"additional_special_tokens": ["### End", "### Instruction:", "### Response:\n"]}
@@ -238,7 +238,7 @@ dbTestQuestion4_5(training_args)
 
 # TODO
 # load the pre-trained model
-model = <FILL_IN>
+model = "AutoModelForCausalLM" #<FILL_IN>
 
 # COMMAND ----------
 
